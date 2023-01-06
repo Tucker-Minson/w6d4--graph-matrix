@@ -1,34 +1,50 @@
 function findNeighbors(node, matrix) {
+    let arr = [];
     // Up
-
+    if (node[0] > 0) {
+        arr.push([node[0] - 1, node[1]])
+    }
     // Down
-
+    // if val at zero is greater than matrix, we have gone outside
+    if (node[0] < matrix.length - 1) {
+        arr.push([node[0] + 1, node[1]])
+    }
     // Left
+    if (node[1] > 0) {
+        arr.push([node[0], node[1] - 1])
+
+    }
 
     // Right
-
+    if (node[1] < matrix[node[0]].length - 1) {
+        arr.push([node[0], node[1] + 1])
+    }
     // Your code here
+    return arr
 }
 
 
 function bfsPath(matrix, startNode, endValue) {
     // Your code here
+    
 }
 
 
 // ***** UNCOMMENT FOR LOCAL TESTING *****
 
-// const matrix1 = [ 
-//     [  1,  2,  3,  4 ],
-//     [  5,  6,  7,  8 ],
-//     [  9, 10, 11, 12 ],
-//     [ 13, 14, 15, 16 ]
-// ];
+const matrix1 = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+];
 
 // // EXAMPLE TESTS #1. Tests for findNeighbors function
-// console.log(findNeighbors([1,1], matrix1)) // Finds all 4 neighbors from an
-// // internal node (left, right, down, up)
-// // [ [ 0, 1 ], [ 2, 1 ], [ 1, 2 ], [ 1, 0 ] ]
+console.log(findNeighbors([1, 1], matrix1)) // Finds all 4 neighbors from an
+// internal node (up, down, left, right)
+// [ [ 0, 1 ], [ 2, 1 ], [ 1, 2 ], [ 1, 0 ] ]
+//       2         10        7         5
+//       up       down      right      left
 
 // console.log(findNeighbors([0,0], matrix1)); // Finds two neighbors from a
 // // corner node // [ [ 1, 0 ], [ 0, 1 ] ]
@@ -60,11 +76,11 @@ function bfsPath(matrix, startNode, endValue) {
 // // value is located at start node
 // // [ [ 2, 2 ] ]
 
-// console.log(bfsPath(matrix1, [1,2], 8)); // can handle various start nodes 
+// console.log(bfsPath(matrix1, [1,2], 8)); // can handle various start nodes
 // // and end values
 // // [ [ 1, 2 ], [ 0, 2 ], [ 2, 2 ], [ 1, 1 ], [ 1, 3 ] ]
 
-// console.log(bfsPath(matrix1, [0,0], 17)); // can return false if end value 
+// console.log(bfsPath(matrix1, [0,0], 17)); // can return false if end value
 // // is not found
 // // false
 
